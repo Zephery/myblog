@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myblog.dao.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.myblog.entity.Admin">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="adminname" property="adminname" jdbcType="VARCHAR"/>
+        <result column="adminpasswd" property="adminpasswd" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, adminname, adminpasswd
+    </sql>
+    <insert id="insertSelective" parameterType="com.myblog.entity.Admin">
+        insert into admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="adminname != null">
+                adminname,
+            </if>
+            <if test="adminpasswd != null">
+                adminpasswd,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="adminname != null">
+                #{adminname,jdbcType=VARCHAR},
+            </if>
+            <if test="adminpasswd != null">
+                #{adminpasswd,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.myblog.entity.Admin">
+        update admin
+        <set>
+            <if test="adminname != null">
+                adminname = #{adminname,jdbcType=VARCHAR},
+            </if>
+            <if test="adminpasswd != null">
+                adminpasswd = #{adminpasswd,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getAdminname" resultMap="BaseResultMap">
+        SELECT id,adminname,adminpasswd
+        FROM admin
+        <where>
+            adminname=#{adminname,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="getAdminData" resultMap="BaseResultMap">
+        SELECT id,adminname,admminpasswd
+        FROM admin
+    </select>
+
+</mapper>
