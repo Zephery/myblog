@@ -21,10 +21,13 @@
     <!-- 自动扫描包中的bean -->
     <context:component-scan base-package="com.myblog.*"/>
     <!-- enable autowire -->
+
     <context:annotation-config/>
+
     <!--配置数据源属性文件 -->
     <context:property-placeholder location="classpath:jdbc.properties" />
     <!-- enable transaction demarcation with annotations -->
+
     <tx:annotation-driven/>
     <!-- 配置数据源，使用阿里巴巴连接池Druid -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
