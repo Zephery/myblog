@@ -8,7 +8,7 @@
     <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/mdeditor/css/editormd.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/mdeditor/editormd.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/mdeditor/editormd.js"></script>
     <script type="text/javascript">
         $(function () {
             editormd("test-editormd", {
@@ -34,7 +34,7 @@
             <td><input type="text" id="title" name="title" style=""/></td>
             <td>所属类别：</td>
             <td>
-                <select class="easyui-combobox" id="categoryid" name="category.categoryid"
+                <select class="easyui-combobox" id="categoryid" name="categoryid"
                         editable="false"
                         panelHeight="auto">
                     <option value="">请选择博客类别...</option>

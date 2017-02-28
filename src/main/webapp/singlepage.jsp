@@ -37,15 +37,15 @@
         <div class="col-md-8 single-page-left" style="width: 75%;">
             <div class="single-page-info">
                 ${blog.content}
-                <div class="comment-icons">
-                    <ul>
-                        <li><span></span><a href="#">Lorem ipsum dolor sit consectetur</a></li>
-                        <li><span class="clndr"></span>MARCH 1, 2013</li>
-                        <li><span class="admin"></span> <a href="#">Admin</a></li>
-                        <li><span class="cmnts"></span> <a href="#">5 comments</a></li>
-                        <li><a href="#" class="like">15</a></li>
-                    </ul>
-                </div>
+                <%--<div class="comment-icons">--%>
+                    <%--<ul>--%>
+                        <%--<li><span></span><a href="#">Lorem ipsum dolor sit consectetur</a></li>--%>
+                        <%--<li><span class="clndr"></span>MARCH 1, 2013</li>--%>
+                        <%--<li><span class="admin"></span> <a href="#">Admin</a></li>--%>
+                        <%--<li><span class="cmnts"></span> <a href="#">5 comments</a></li>--%>
+                        <%--<li><a href="#" class="like">15</a></li>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
             </div>
 
             <!--//related-posts-->
