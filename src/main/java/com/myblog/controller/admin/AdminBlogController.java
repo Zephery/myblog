@@ -53,6 +53,7 @@ public class AdminBlogController {
         String content = request.getParameter("htmlcontent");
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
+        summary = summary.substring(0, summary.length() > 200 ? 200 : summary.length());
         Blog blog = new Blog();
         Category category = new Category();
         category.setCategoryid(categoryid);

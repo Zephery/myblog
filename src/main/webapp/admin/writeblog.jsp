@@ -24,10 +24,34 @@
                 imageUploadURL: "${pageContext.request.contextPath}/admin/uploadfile.do"
             });
         });
+        function submitData() {
+
+            var title=$("#title").val();
+            var blogTypeId=$("#blogTypeId").combobox("getValue");
+            var content=UE.getEditor('editor').getContent();
+            var keyWord=$("#keyWord").val();
+
+            if(title==null || title==''){
+                alert("请输入标题！");
+            }else if(blogTypeId==null || blogTypeId==''){
+                alert("请选择博客类别！");
+            }else if(content==null || content==''){
+                alert("请输入内容！");
+            }else{
+                $.post("${pageContext.request.contextPath}/admin/blog/save.do",{'title':title,'blogType.id':blogTypeId,'content':content,'contentNoTag':UE.getEditor('editor').getContentTxt(),'summary':UE.getEditor('editor').getContentTxt().substr(0,155),'keyWord':keyWord},function(result){
+                    if(result.success){
+                        alert("博客发布成功！");
+                        resetValue();
+                    }else{
+                        alert("博客发布失败！");
+                    }
+                },"json");
+            }
+        }
     </script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/admin/saveblog.do">
+<form action="${pageContext.request.contextPath}/admin/saveblog.do" method="post">
     <table cellspacing="20px">
         <tr>
             <td width="80px">博客标题：</td>
