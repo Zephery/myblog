@@ -51,6 +51,7 @@ public class AdminBlogController {
             throws Exception {
         String title = request.getParameter("title");
         String content = request.getParameter("htmlcontent");
+        String mdcontent=request.getParameter("mdcontent");
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
         summary = summary.substring(0, summary.length() > 200 ? 200 : summary.length());

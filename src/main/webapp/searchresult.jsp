@@ -2,15 +2,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
-<head>
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <link href="${pageContext.request.contextPath}/static/css/javacss.css" type="text/css" rel="stylesheet" media="all">
-</head>
 <jsp:include page="head.jsp">
     <jsp:param name="blogactive" value="active"/>
     <jsp:param name="title" value="Blog"/>
 </jsp:include>
-
+<html>
+<head>
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/javacss.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body>
 <!--//header-->
 <!--blog-->
 <div class="blog">
@@ -162,6 +163,8 @@
         </tfoot>
     </div>
 </div>
+</body>
+</html>
 <!--//blog-->
 <!--footer-->
 <jsp:include page="foot.jsp"/>
