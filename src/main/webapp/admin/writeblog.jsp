@@ -25,7 +25,6 @@
             });
         });
         function submitData() {
-
             var title=$("#title").val();
             var blogTypeId=$("#blogTypeId").combobox("getValue");
             var content=UE.getEditor('editor').getContent();
@@ -67,7 +66,6 @@
                     </c:forEach>
                 </select>
             </td>
-
             <td></td>
             <td>
                 <div>
@@ -75,7 +73,6 @@
                 </div>
             </td>
         </tr>
-
     </table>
     <div class="editormd" id="test-editormd">
         <textarea class="editormd-markdown-textarea" name="mdcontent"></textarea>
