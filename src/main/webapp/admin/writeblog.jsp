@@ -11,7 +11,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/mdeditor/editormd.js"></script>
     <script type="text/javascript">
         $(function () {
-
             editormd("test-editormd", {
                 width: "90%",
                 height: 640,

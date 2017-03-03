@@ -13,15 +13,17 @@
 <head>
     <title><%=request.getParameter("title")%>
     </title>
-    <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg" />
+    <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg"/>
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <script src="js/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/social-share-1.0.2/dist/social-share.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/js/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/js/social-share-1.0.2/dist/social-share.min.css">
     <script src="${pageContext.request.contextPath}/static/js/social-share-1.0.2/dist/social-share.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
@@ -54,14 +56,14 @@
                 plugin: 'wechat',
                 url: '//yet.another.url',
                 color: 'yellow'
-            },{
+            }, {
                 plugin: 'weibo',
-                url:'http://weibo.com/1925306000'
+                url: 'http://weibo.com/1925306000'
             }];
             var options = {
                 size: 'sm'
             };
-            window.socialShare(el, links,options);
+            window.socialShare(el, links, options);
         })
     </script>
     <!--//end-smoth-scrolling-->
@@ -84,8 +86,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.html" class="<%=request.getParameter("indexactive")%>">主页</a></li>
-                    <li><a href="blog.html?pagenum=1" class="<%=request.getParameter("blogactive")%>">生活笔记</a></li>
-                    <li><a href="tech.jsp" class="<%=request.getParameter("techactive")%>">技术杂谈</a></li>
+                    <li><a href="blog.html?pagenum=1" class="<%=request.getParameter("blogactive")%>">我的博客</a></li>
+                    <%--<li><a href="tech.jsp" class="<%=request.getParameter("techactive")%>">技术杂谈</a></li>--%>
                     <li><a href="gallery.html" class="<%=request.getParameter("galleryactive")%>">旅行</a></li>
                     <li><a href="testimonial.jsp" class="<%=request.getParameter("testiactive")%>">实时数据</a></li>
                     <li><a href="board.html" class="<%=request.getParameter("boardactive")%>">留言板</a></li>
