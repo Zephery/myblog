@@ -13,6 +13,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ibatis.annotations.Param;
 import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
@@ -190,6 +191,8 @@ public class AdminBlogController {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Blog blog = blogService.getBlogDetail(blogid);
+            blog.setContent(StringEscapeUtils.escapeJavaScript(blog.getContent()));
+//            blog.setContent(StringEscapeUtils.escapeHtml(blog.getContent()));
             List<Category> categoryList = categoryService.getAll();
             modelAndView.addObject("categories", categoryList);
             modelAndView.addObject("blog", blog);

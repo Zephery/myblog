@@ -61,7 +61,10 @@
     </script>
     <script type="text/javascript">
         $(function () {
+            <%--var strrr='${blog.content}';--%>
             $('#mdcontent').append(html2markdown('${blog.content}').trim());
+//            console.log(strrr);
+            <%--console.log(${blog.category.categoryname});--%>
         });
     </script>
 </head>
@@ -72,12 +75,12 @@
             <td><label>博客id:<input type="text" readonly="readonly" name="blogid" value="${blog.blogid}"/> </label></td>
             <td width="80px">博客标题：</td>
             <td><label><input type="text" id="title" name="title" style="" value="${blog.title}"/></label></td>
-            <td>所属类别：</td>
+            <td>所属类别：${blog.category.categoryname}</td>
             <td>
                 <select class="easyui-combobox" id="categoryid" name="categoryid"
                         editable="false"
                         panelHeight="auto">
-                    <option value="${blog.category.categoryid}">${blog.category.categoryname}</option>
+                    <%--<option value="${blog.category.categoryid}">${blog.category.categoryname}</option>--%>
                     <c:forEach var="category" items="${categories}">
                         <option value="${category.categoryid}">${category.categoryname}</option>
                     </c:forEach>
