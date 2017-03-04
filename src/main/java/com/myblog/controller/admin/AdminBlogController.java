@@ -2,16 +2,18 @@ package com.myblog.controller.admin;
 
 import com.myblog.entity.Blog;
 import com.myblog.entity.Category;
+import com.myblog.entity.PageBean;
 import com.myblog.entity.Talk;
 import com.myblog.lucene.BlogIndex;
 import com.myblog.service.IAdminService;
 import com.myblog.service.IBlogService;
 import com.myblog.service.ICategoryService;
-import com.myblog.util.ImageUtil;
-import com.myblog.util.QiniuUtil;
-import com.myblog.util.ResponseUtil;
+import com.myblog.util.*;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.apache.commons.io.FileUtils;
+import org.apache.ibatis.annotations.Param;
 import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
@@ -22,12 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -49,15 +54,18 @@ public class AdminBlogController {
     @RequestMapping("saveblog")
     public String save(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        String blog_id=request.getParameter("blogid");
         String title = request.getParameter("title");
         String content = request.getParameter("htmlcontent");
-        String mdcontent=request.getParameter("mdcontent");
+        String mdcontent = request.getParameter("mdcontent");
+        Integer blogid=Integer.parseInt(blog_id);
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
         summary = summary.substring(0, summary.length() > 200 ? 200 : summary.length());
         Blog blog = new Blog();
         Category category = new Category();
         category.setCategoryid(categoryid);
+        blog.setBlogid(blogid);
         blog.setTitle(title);
         blog.setSummary(summary);
         blog.setContent(content);
@@ -143,5 +151,52 @@ public class AdminBlogController {
         List<Blog> blogs = blogService.getAllWithoutCategory();
         BlogIndex.refreshlucene(blogs);
         return "admin/luceneupdate";
+    }
+
+    @RequestMapping("blogManage")
+    public String getblogManage() {
+        return "admin/blogManage";
+    }
+
+    @RequestMapping("bloglist")
+    public String getlist(@RequestParam(value = "page", required = false) String page,
+                          @RequestParam(value = "rows", required = false) String rows,
+                          Blog s_blog,
+                          HttpServletResponse response) throws Exception {
+        if (page == null) {
+            page = "1";
+            rows = "10";
+        }
+        PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("title", StringUtil.formatLike(s_blog.getTitle()));
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
+        List<Blog> blogList = blogService.getAllWithoutCategory();
+//        Long total=blogList.size();
+        JSONObject result = new JSONObject();
+        JsonConfig jsonConfig = new JsonConfig();
+        jsonConfig.registerJsonValueProcessor(java.util.Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
+        JSONArray jsonArray = JSONArray.fromObject(blogList, jsonConfig);
+        result.put("rows", jsonArray);
+        result.put("total", blogList.size());
+        ResponseUtil.write(response, result);
+        return null;
+    }
+
+    @RequestMapping("modifyBlog")
+    public ModelAndView modifyBlog(
+            @RequestParam(value = "blogid", required = true) Integer blogid) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Blog blog = blogService.getBlogDetail(blogid);
+            List<Category> categoryList = categoryService.getAll();
+            modelAndView.addObject("categories", categoryList);
+            modelAndView.addObject("blog", blog);
+        } catch (Exception e) {
+            logger.error("modifyBlog error" + e);
+        }
+        modelAndView.setViewName("admin/modifyBlog");
+        return modelAndView;
     }
 }

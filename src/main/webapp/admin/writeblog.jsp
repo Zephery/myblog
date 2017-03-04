@@ -54,7 +54,7 @@
     <table cellspacing="20px">
         <tr>
             <td width="80px">博客标题：</td>
-            <td><input type="text" id="title" name="title" style=""/></td>
+            <td><label><input type="text" id="title" name="title" style=""/></label></td>
             <td>所属类别：</td>
             <td>
                 <select class="easyui-combobox" id="categoryid" name="categoryid"

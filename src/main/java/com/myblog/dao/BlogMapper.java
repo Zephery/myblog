@@ -46,7 +46,7 @@ public interface BlogMapper {
             "content = #{content,jdbcType=VARCHAR},",
             "picture = #{picture,jdbcType=VARCHAR},",
             "datetime = #{datetime,jdbcType=TIMESTAMP},",
-            "categoryid = #{categoryid,jdbcType=INTEGER},",
+            "categoryid = #{category.categoryid,jdbcType=INTEGER}",
             "where blogid = #{blogid,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Blog record);
