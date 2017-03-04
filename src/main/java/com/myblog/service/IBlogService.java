@@ -19,7 +19,11 @@ public interface IBlogService {
 
     public List<Blog> getAllWithoutCategory();
 
+    public List<Blog> getbypage(Integer start,Integer size);
+
     public int getcatalogidbyblogid(Integer id);
 
     public int update(Blog blog);
+
+    public int delete(Integer blogid);
 }

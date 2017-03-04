@@ -42,6 +42,13 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
+    public List<Blog> getbypage(Integer start, Integer size) {
+        List<Blog> list = blogMapper.getAllWithoutCategory();
+        list = list.subList(start, start + size);
+        return list;
+    }
+
+    @Override
     public int getcatalogidbyblogid(Integer id) {
         return blogMapper.getcategoryidbyblogid(id);
     }
@@ -49,5 +56,10 @@ public class BlogServiceImpl implements IBlogService {
     @Override
     public int update(Blog blog) {
         return blogMapper.updateByPrimaryKey(blog);
+    }
+
+    @Override
+    public int delete(Integer blogid) {
+        return blogMapper.deleteByPrimaryKey(blogid);
     }
 }

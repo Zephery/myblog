@@ -132,7 +132,7 @@
             <a href="javascript:openTab('写博客','writeblog.html','icon-writeblog')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-writeblog'" style="width: 150px;">写博客</a>
             <a href="javascript:openTab('博客信息管理','blogManage.jsp','icon-bkgl')" class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-bkgl'" style="width: 150px;">博客信息管理</a>
+               data-options="plain:true,iconCls:'icon-bkgl'" style="width: 150px;">文章管理</a>
         </div>
         <div title="图片管理" data-options="iconCls:'icon-bkgl'" style="padding:10px;">
             <a href="javascript:openTab('上传图片','uploadpic.html','icon-writeblog')" class="easyui-linkbutton"

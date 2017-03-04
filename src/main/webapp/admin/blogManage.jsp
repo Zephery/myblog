@@ -35,12 +35,12 @@
             }
             var strIds=[];
             for(var i=0;i<selectedRows.length;i++){
-                strIds.push(selectedRows[i].id);
+                strIds.push(selectedRows[i].blogid);
             }
             var ids=strIds.join(",");
             $.messager.confirm("系统提示","您确定要删除这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
                 if(r){
-                    $.post("${pageContext.request.contextPath}/admin/blog/delete.do",{ids:ids},function(result){
+                    $.post("${pageContext.request.contextPath}/admin/delete.do",{ids:ids},function(result){
                         if(result.success){
                             $.messager.alert("系统提示","数据已成功删除！");
                             $("#dg").datagrid("reload");

@@ -54,11 +54,11 @@ public class AdminBlogController {
     @RequestMapping("saveblog")
     public String save(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        String blog_id=request.getParameter("blogid");
+        String blog_id = request.getParameter("blogid");
         String title = request.getParameter("title");
         String content = request.getParameter("htmlcontent");
         String mdcontent = request.getParameter("mdcontent");
-        Integer blogid=Integer.parseInt(blog_id);
+        Integer blogid = Integer.parseInt(blog_id);
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
         summary = summary.substring(0, summary.length() > 200 ? 200 : summary.length());
@@ -172,14 +172,14 @@ public class AdminBlogController {
         map.put("title", StringUtil.formatLike(s_blog.getTitle()));
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPageSize());
-        List<Blog> blogList = blogService.getAllWithoutCategory();
+        List<Blog> blogList = blogService.getbypage(pageBean.getStart(), pageBean.getPageSize());
 //        Long total=blogList.size();
         JSONObject result = new JSONObject();
         JsonConfig jsonConfig = new JsonConfig();
         jsonConfig.registerJsonValueProcessor(java.util.Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
         JSONArray jsonArray = JSONArray.fromObject(blogList, jsonConfig);
         result.put("rows", jsonArray);
-        result.put("total", blogList.size());
+        result.put("total", blogService.getAllWithoutCategory().size());
         ResponseUtil.write(response, result);
         return null;
     }
@@ -198,5 +198,18 @@ public class AdminBlogController {
         }
         modelAndView.setViewName("admin/modifyBlog");
         return modelAndView;
+    }
+
+    @RequestMapping("/delete")
+    public String delete(@RequestParam(value = "ids") String ids, HttpServletResponse response) throws Exception {
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            blogService.delete(Integer.parseInt(idsStr[i]));
+//            blogIndex.deleteIndex(idsStr[i]);
+        }
+        JSONObject result = new JSONObject();
+        result.put("success", true);
+        ResponseUtil.write(response, result);
+        return null;
     }
 }

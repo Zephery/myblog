@@ -36,19 +36,6 @@ public class CategoryController {
         return modelAndView;
     }
 
-    @RequestMapping("delete")
-    public String delete(
-            @RequestParam(value = "ids") String ids, HttpServletResponse response
-    ) throws Exception {
-        String[] idStr = ids.split(",");
-        JSONObject result = new JSONObject();
-//        for(int i=0;i<idStr.length;i++){
-//            if(categoryService.ge)
-//        }
-        result.put("sucees", true);
-        ResponseUtil.write(response, result);
-        return null;
-    }
 
     @RequestMapping("updatecategory")
     public ModelAndView updatecategory(Category category) {
