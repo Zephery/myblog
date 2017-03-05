@@ -14,7 +14,6 @@ import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.ibatis.annotations.Param;
 import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
