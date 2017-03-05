@@ -32,7 +32,7 @@ public interface BlogMapper {
             "select",
             "b.blogid, b.title, b.summary, b.content, b.picture, b.datetime, c.categoryid,c.categoryname",
             "from blog b,category c",
-            "where b.blogid = #{blogid,jdbcType=INTEGER}"
+            "where b.blogid = #{blogid,jdbcType=INTEGER} and b.categoryid=c.categoryid"
     })
     @ResultMap("BaseResultMap")
     Blog selectByPrimaryKey(Integer blogid);

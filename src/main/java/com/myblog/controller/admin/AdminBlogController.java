@@ -55,18 +55,18 @@ public class AdminBlogController {
     @RequestMapping("saveblog")
     public String save(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        String blog_id = request.getParameter("blogid");
+//        String blog_id = request.getParameter("blogid");
         String title = request.getParameter("title");
         String content = request.getParameter("htmlcontent");
         String mdcontent = request.getParameter("mdcontent");
-        Integer blogid = Integer.parseInt(blog_id);
+//        Integer blogid = Integer.parseInt(blog_id);
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
         summary = summary.substring(0, summary.length() > 200 ? 200 : summary.length());
         Blog blog = new Blog();
         Category category = new Category();
         category.setCategoryid(categoryid);
-        blog.setBlogid(blogid);
+//        blog.setBlogid(blogid);
         blog.setTitle(title);
         blog.setSummary(summary);
         blog.setContent(content);
