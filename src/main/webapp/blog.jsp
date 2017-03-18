@@ -97,7 +97,7 @@
                 <!-- 多说公共JS代码 end -->
             </div>
             <!--评论结束-->
-            <div id="testtest" style="position: fixed;margin-top: -1100px;width: 19%;display: none">
+            <div id="testtest" style="position: fixed;margin-top: -1050px;width: 19%;display: none">
                 <div class="category_blog-ctgry blog-ctgry">
                     <h4>类别</h4>
                     <div class="list-group">
@@ -111,7 +111,7 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     $(window).scroll(function () {
-                        if ($(window).scrollTop() > 1000) {    //当前窗口距离整个页面的顶部距离
+                        if ($(window).scrollTop() > 1100) {    //当前窗口距离整个页面的顶部距离
                             $("#testtest").fadeIn();
                         } else {
                             $("#testtest").fadeOut();
