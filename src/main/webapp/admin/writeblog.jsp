@@ -51,11 +51,11 @@
                 }, "json");
             }
         }
-        $(function () {
-            var text = $(".editormd-preview").prop("outerHTML");
-            console.log(text);
-            $("#htmlcontent").attr("value", text);
-        })
+//        $(function () {
+//            var text = $(".editormd-preview").prop("outerHTML");
+//            console.log(text);
+//            $("#htmlcontent").attr("value", text);
+//        })
     </script>
 </head>
 <body>
