@@ -1040,11 +1040,6 @@ ul.pagination li a {
     padding-left: 0 !important;
 }
 
-.single-page p {
-    color: #989595;
-    font-size: 14px;
-    line-height: 1.6em;
-}
 
 .comment-icons {
     border-top: 1px dashed rgb(95, 158, 160);

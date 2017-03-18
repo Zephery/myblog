@@ -56,8 +56,9 @@ public class AdminBlogController {
             throws Exception {
 //        String blog_id = request.getParameter("blogid");
         String title = request.getParameter("title");
-        String content = request.getParameter("htmlcontent");
-        String mdcontent = request.getParameter("mdcontent");
+        String content = request.getParameter("htmlcontent"); //存储到数据库中的
+        String htcontent=request.getParameter("htcontent");    //保留字段
+        String mdcontent = request.getParameter("mdcontent");     //纯markdown，保留字段
 //        Integer blogid = Integer.parseInt(blog_id);
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();

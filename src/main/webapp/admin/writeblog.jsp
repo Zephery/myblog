@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>写博客页面</title>
-    <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg" />
+    <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/mdeditor/css/editormd.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/mdeditor/editormd.js"></script>
@@ -25,32 +25,39 @@
             });
         });
         function submitData() {
-            var title=$("#title").val();
-            var blogTypeId=$("#blogTypeId").combobox("getValue");
-            var content=UE.getEditor('editor').getContent();
-            var keyWord=$("#keyWord").val();
-
-            if(title==null || title==''){
+            var title = $("#title").val();
+            var categoryid = $("#categoryid").val();
+            var content = $(".editormd-preview").html();
+            console.log(content);
+            if (title == null || title == '') {
                 alert("请输入标题！");
-            }else if(blogTypeId==null || blogTypeId==''){
+            } else if (categoryid == null || categoryid == '') {
                 alert("请选择博客类别！");
-            }else if(content==null || content==''){
+            } else if (content == null || content == '') {
                 alert("请输入内容！");
-            }else{
-                $.post("${pageContext.request.contextPath}/admin/blog/save.do",{'title':title,'blogType.id':blogTypeId,'content':content,'contentNoTag':UE.getEditor('editor').getContentTxt(),'summary':UE.getEditor('editor').getContentTxt().substr(0,155),'keyWord':keyWord},function(result){
-                    if(result.success){
+            } else {
+                $.post("${pageContext.request.contextPath}/admin/saveblog.do", {
+                    'title': title,
+                    'categoryid': categoryid,
+                    'htmlcontent': content
+                }, function (result) {
+                    if (result.success) {
                         alert("博客发布成功！");
-                        resetValue();
-                    }else{
+                    } else {
                         alert("博客发布失败！");
                     }
-                },"json");
+                }, "json");
             }
         }
+        $(function () {
+            var text = $(".editormd-preview").prop("outerHTML");
+            console.log(text);
+            $("#htmlcontent").attr("value", text);
+        })
     </script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/admin/saveblog.do" method="post">
+<form method="post">
     <table cellspacing="20px">
         <tr>
             <td width="80px">博客标题：</td>
@@ -69,7 +76,7 @@
             <td></td>
             <td>
                 <div>
-                    <button type="submit">Submit</button>
+                    <input type="button" onclick="submitData()" value="Submit"/>
                 </div>
             </td>
         </tr>
@@ -77,7 +84,8 @@
     <div class="editormd" id="test-editormd">
         <textarea class="editormd-markdown-textarea" name="mdcontent"></textarea>
         <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
-        <textarea class="editormd-html-textarea" name="htmlcontent"></textarea>
+        <textarea class="editormd-html-textarea" name="htcontent"></textarea>
+        <textarea hidden="true" id="htmlcontent" name="htmlcontent"></textarea>
     </div>
 </form>
 </body>

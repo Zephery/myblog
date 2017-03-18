@@ -8,26 +8,56 @@
 </jsp:include>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="static/mdeditor/css/editormd.css">
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="static/mdeditor/editormd.min.js"></script>
-    <script>
+    <link type="image/x-icon" rel="shortcut icon" href="${pageContext.request.contextPath}/images/66.jpg"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/mdeditor/css/editormd.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/mdeditor/editormd.js"></script>
+    <script type="text/javascript">
         $(function () {
             editormd("test-editormd", {
                 width: "90%",
                 height: 640,
                 syncScrolling: "single",
                 //你的lib目录的路径，
-                path: "static/mdeditor/lib/",
+                path: "${pageContext.request.contextPath}/static/mdeditor/lib/",
                 //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
                 saveHTMLToTextarea: true,
                 imageUpload: true,
                 imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                imageUploadURL: "/upload/image"
+                imageUploadURL: "${pageContext.request.contextPath}/admin/uploadfile.do"
             });
         });
+        function submitData() {
+            var title = $("#title").val();
+            var blogTypeId = $("#blogTypeId").combobox("getValue");
+            var content = UE.getEditor('editor').getContent();
+            var keyWord = $("#keyWord").val();
+
+            if (title == null || title == '') {
+                alert("请输入标题！");
+            } else if (blogTypeId == null || blogTypeId == '') {
+                alert("请选择博客类别！");
+            } else if (content == null || content == '') {
+                alert("请输入内容！");
+            } else {
+                $.post("${pageContext.request.contextPath}/admin/blog/save.do", {
+                    'title': title,
+                    'blogType.id': blogTypeId,
+                    'content': content,
+                    'contentNoTag': UE.getEditor('editor').getContentTxt(),
+                    'summary': UE.getEditor('editor').getContentTxt().substr(0, 155),
+                    'keyWord': keyWord
+                }, function (result) {
+                    if (result.success) {
+                        alert("博客发布成功！");
+                        resetValue();
+                    } else {
+                        alert("博客发布失败！");
+                    }
+                }, "json");
+            }
+        }
     </script>
-    <script src="static/mdeditor/lib/marked.min.js"></script>
 </head>
 <body>
 <!--//header-->
@@ -40,7 +70,9 @@
         </ol>
         <div class="col-md-8 single-page-left" style="width: 75%;">
             <div class="single-page-info">
-                ${blog.content}
+                    <div class="markdown-body editormd-preview-container" previewcontainer="true" style="margin-left: -20px">
+                        ${blog.content}
+                    </div>
                 <%--<div class="comment-icons">--%>
                 <%--<ul>--%>
                 <%--<li><span></span><a href="#">Lorem ipsum dolor sit consectetur</a></li>--%>
