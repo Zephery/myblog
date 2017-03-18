@@ -6,45 +6,49 @@
     <jsp:param name="blogactive" value="active"/>
     <jsp:param name="title" value="${blog.title}"/>
 </jsp:include>
-<link rel="stylesheet" type="text/css" href="static/mdeditor/css/editormd.css">
-<script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="static/mdeditor/editormd.min.js"></script>
-<script>
-    $(function () {
-        editormd("test-editormd", {
-            width: "90%",
-            height: 640,
-            syncScrolling: "single",
-            //你的lib目录的路径，
-            path: "static/mdeditor/lib/",
-            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
-            saveHTMLToTextarea: true,
-            imageUpload: true,
-            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "/upload/image"
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/mdeditor/css/editormd.css">
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/mdeditor/editormd.min.js"></script>
+    <script>
+        $(function () {
+            editormd("test-editormd", {
+                width: "90%",
+                height: 640,
+                syncScrolling: "single",
+                //你的lib目录的路径，
+                path: "static/mdeditor/lib/",
+                //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+                saveHTMLToTextarea: true,
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "/upload/image"
+            });
         });
-    });
-</script>
-<script src="static/mdeditor/lib/marked.min.js"></script>
+    </script>
+    <script src="static/mdeditor/lib/marked.min.js"></script>
+</head>
+<body>
 <!--//header-->
 <!--single-page-->
 <div class="single-page">
     <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="blog.html?pagenum=1">博客</a></li>
-                <li class="active">${blog.title}</li>
-            </ol>
+        <ol class="breadcrumb">
+            <li><a href="blog.html?pagenum=1">博客</a></li>
+            <li class="active">${blog.title}</li>
+        </ol>
         <div class="col-md-8 single-page-left" style="width: 75%;">
             <div class="single-page-info">
                 ${blog.content}
                 <%--<div class="comment-icons">--%>
-                    <%--<ul>--%>
-                        <%--<li><span></span><a href="#">Lorem ipsum dolor sit consectetur</a></li>--%>
-                        <%--<li><span class="clndr"></span>MARCH 1, 2013</li>--%>
-                        <%--<li><span class="admin"></span> <a href="#">Admin</a></li>--%>
-                        <%--<li><span class="cmnts"></span> <a href="#">5 comments</a></li>--%>
-                        <%--<li><a href="#" class="like">15</a></li>--%>
-                    <%--</ul>--%>
+                <%--<ul>--%>
+                <%--<li><span></span><a href="#">Lorem ipsum dolor sit consectetur</a></li>--%>
+                <%--<li><span class="clndr"></span>MARCH 1, 2013</li>--%>
+                <%--<li><span class="admin"></span> <a href="#">Admin</a></li>--%>
+                <%--<li><span class="cmnts"></span> <a href="#">5 comments</a></li>--%>
+                <%--<li><a href="#" class="like">15</a></li>--%>
+                <%--</ul>--%>
                 <%--</div>--%>
             </div>
 
@@ -62,7 +66,7 @@
                     ds.type = 'text/javascript';
                     ds.async = true;
                     ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                            '//static.duoshuo.com/embed.js';
+                        '//static.duoshuo.com/embed.js';
                     ds.charset = 'UTF-8';
                     (document.getElementsByTagName('head')[0]
                     || document.getElementsByTagName('body')[0]).appendChild(ds);
@@ -100,7 +104,7 @@
                         ds.type = 'text/javascript';
                         ds.async = true;
                         ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                                '//static.duoshuo.com/embed.js';
+                            '//static.duoshuo.com/embed.js';
                         ds.charset = 'UTF-8';
                         (document.getElementsByTagName('head')[0]
                         || document.getElementsByTagName('body')[0]).appendChild(ds);
@@ -136,6 +140,8 @@
         <div class="clearfix"></div>
     </div>
 </div>
+</body>
+</html>
 <!--//single-page-->
 <!--footer-->
 <jsp:include page="foot.jsp"/>
