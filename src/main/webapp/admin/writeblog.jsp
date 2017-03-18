@@ -25,6 +25,7 @@
             });
         });
         function submitData() {
+            alert("正在发布，请稍等");
             var title = $("#title").val();
             var categoryid = $("#categoryid").val();
             var content = $(".editormd-preview").html();
