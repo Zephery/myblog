@@ -44,6 +44,7 @@
                 }, function (result) {
                     if (result.success) {
                         alert("博客发布成功！");
+                        window.location.href = "${pageContext.request.contextPath}/blog.html?pagenum=1";
                     } else {
                         alert("博客发布失败！");
                     }

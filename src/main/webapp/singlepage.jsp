@@ -70,7 +70,7 @@
         </ol>
         <div class="col-md-8 single-page-left" style="width: 75%;">
             <div class="single-page-info">
-                    <div class="markdown-body editormd-preview-container" previewcontainer="true" style="margin-left: -20px">
+                    <div class="markdown-body editormd-preview-container" previewcontainer="true" style="margin-left: -25px">
                         ${blog.content}
                     </div>
                 <%--<div class="comment-icons">--%>
