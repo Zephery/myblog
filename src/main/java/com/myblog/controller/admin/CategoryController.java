@@ -3,13 +3,9 @@ package com.myblog.controller.admin;
 import com.myblog.entity.Category;
 import com.myblog.service.IBlogService;
 import com.myblog.service.ICategoryService;
-import com.myblog.util.ResponseUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
