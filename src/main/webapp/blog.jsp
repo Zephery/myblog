@@ -28,9 +28,8 @@
                     <ul>
                         <c:forEach var="blog" items="${blogs}">
                             <li style="margin-bottom: 30px">
-                                <h3 class="title"><a href="getBlogDetail.html?blogid=${blog.blogid}">${blog.title}</a>
+                                <h3 class="title"><a href="getBlogDetail.html?blogid=${blog.blogid}" style="font-size: 20px">${blog.title}</a>
                                 </h3>
-                                <br>
                                 <span class="summary">摘要: ${blog.summary}...</span>
                                 <span class="img">
 				  		<c:forEach var="image" items="${blog.imageList}">
