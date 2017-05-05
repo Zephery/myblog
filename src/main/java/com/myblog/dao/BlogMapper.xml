@@ -6,6 +6,7 @@
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="summary" property="summary" jdbcType="VARCHAR"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="mdcontent" property="mdcontent" jdbcType="VARCHAR"/>
         <result column="picture" property="picture" jdbcType="VARCHAR"/>
         <result column="datetime" property="datetime" jdbcType="TIMESTAMP"/>
         <association property="category" javaType="com.myblog.entity.Category"> <!--必须放在最后的位置-->

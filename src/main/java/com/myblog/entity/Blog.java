@@ -12,7 +12,7 @@ public class Blog {
     private String summary;
 
     private String content;
-
+    private String mdcontent;
     private String picture;
 
     private Date datetime;
@@ -119,5 +119,13 @@ public class Blog {
 
     public void setFormateDate(String formateDate) {
         this.formateDate = formateDate;
+    }
+
+    public String getMdcontent() {
+        return mdcontent;
+    }
+
+    public void setMdcontent(String mdcontent) {
+        this.mdcontent = mdcontent;
     }
 }

@@ -29,6 +29,7 @@
             var title = $("#title").val();
             var categoryid = $("#categoryid").val();
             var content = $(".editormd-preview").html();
+            var mdcontent=$(".editormd-markdown-textarea").val();
             console.log(content);
             if (title == null || title == '') {
                 alert("请输入标题！");
@@ -40,7 +41,8 @@
                 $.post("${pageContext.request.contextPath}/admin/saveblog.do", {
                     'title': title,
                     'categoryid': categoryid,
-                    'htmlcontent': content
+                    'htmlcontent': content,
+                    'mdcontent':mdcontent
                 }, function (result) {
                     if (result.success) {
                         alert("博客发布成功！");

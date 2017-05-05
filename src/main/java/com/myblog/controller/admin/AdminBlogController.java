@@ -59,6 +59,7 @@ public class AdminBlogController {
         String content = request.getParameter("htmlcontent"); //存储到数据库中的
         String htcontent=request.getParameter("htcontent");    //保留字段
         String mdcontent = request.getParameter("mdcontent");     //纯markdown，保留字段
+        mdcontent=StringEscapeUtils.escapeSql(mdcontent);
 //        Integer blogid = Integer.parseInt(blog_id);
         Integer categoryid = Integer.parseInt(request.getParameter("categoryid"));
         String summary = Jsoup.parse(content).text();
@@ -72,6 +73,7 @@ public class AdminBlogController {
         blog.setContent(content);
         blog.setDatetime(DateTime.now().toDate());
         blog.setCategory(category);
+        blog.setMdcontent(mdcontent);
         int resultTotal = 0;
         if (blog.getBlogid() == null) {
             resultTotal = blogService.insert(blog);
@@ -191,7 +193,7 @@ public class AdminBlogController {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Blog blog = blogService.getBlogDetail(blogid);
-            blog.setContent(StringEscapeUtils.escapeJavaScript(blog.getContent()));
+            blog.setMdcontent(StringEscapeUtils.escapeHtml(blog.getMdcontent()));
 //            blog.setContent(StringEscapeUtils.escapeHtml(blog.getContent()));
             List<Category> categoryList = categoryService.getAll();
             modelAndView.addObject("categories", categoryList);

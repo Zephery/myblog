@@ -18,11 +18,11 @@ public interface BlogMapper {
             "insert into blog (blogid, title, ",
             "summary, content, ",
             "picture, datetime, ",
-            "categoryid)",
+            "categoryid,mdcontent)",
             "values (#{blogid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
             "#{summary,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, ",
             "#{picture,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, ",
-            "#{category.categoryid,jdbcType=INTEGER})"     //注意这里，有bug
+            "#{category.categoryid,jdbcType=INTEGER},#{mdcontent,jdbcType=VARCHAR})"     //注意这里，有bug
     })
     int insert(Blog record);                  //增加博客
 
@@ -30,7 +30,7 @@ public interface BlogMapper {
 
     @Select({
             "select",
-            "b.blogid, b.title, b.summary, b.content, b.picture, b.datetime, c.categoryid,c.categoryname",
+            "b.blogid, b.title, b.summary, b.content, b.mdcontent, b.picture, b.datetime, c.categoryid,c.categoryname",
             "from blog b,category c",
             "where b.blogid = #{blogid,jdbcType=INTEGER} and b.categoryid=c.categoryid"
     })
@@ -44,6 +44,7 @@ public interface BlogMapper {
             "set title = #{title,jdbcType=VARCHAR},",
             "summary = #{summary,jdbcType=VARCHAR},",
             "content = #{content,jdbcType=VARCHAR},",
+            "mdcontent = #{mdcontent,jdbcType=VARCHAR},",
             "picture = #{picture,jdbcType=VARCHAR},",
             "datetime = #{datetime,jdbcType=TIMESTAMP},",
             "categoryid = #{category.categoryid,jdbcType=INTEGER}",
