@@ -87,8 +87,9 @@
         </tr>
     </table>
     <div class="editormd" id="test-editormd">
+        <!--前面不能有空格-->
         <textarea class="editormd-markdown-textarea" name="mdcontent" id="mdcontent">
-${blog.mdcontent}<!--前面不能有空格-->
+${blog.mdcontent}
         </textarea>
         <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
         <textarea class="editormd-html-textarea" name="htmlcontent"></textarea>
