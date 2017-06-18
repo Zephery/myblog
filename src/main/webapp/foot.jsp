@@ -19,6 +19,28 @@
 </script>
 <div class="copy-right">
     <div class="container">
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="copyright pull-left">
+                    <a href="http://cuiqingcai.com/" title="静觅">静觅</a> 版权所有丨采用<a href="http://yusi123.com/"> 欲思 </a>主题丨基于<a
+                        href="http://cn.wordpress.org/" title="WordPress"> WordPress </a>构建 © 2015丨托管于 <a rel="nofollow"
+                                                                                                          target="_blank"
+                                                                                                          href="http://www.aliyun.com/">阿里云主机</a>
+                    &amp; <a rel="nofollow" target="_blank" href="http://www.qiniu.com/">七牛云存储 </a>丨鲁ICP备14030596号
+                    <div>
+
+                <span id="cnzz_stat_icon_1253486800"><a href="http://www.cnzz.com/stat/website.php?web_id=1253486800"
+                                                        target="_blank">站长统计</a><a
+                        href="http://www.cnzz.com/stat/website.php?web_id=1253486800" target="_blank"> |  今日IP[801] | 今日PV[2178] | 昨日IP[3004] |  昨日PV[9416] | </a><a
+                        href="http://www.cnzz.com/stat/website.php?web_id=1253486800&amp;method=online" target="_blank">当前在线[23]</a></span>
+                        <script src="jingmi/z_stat.php" type="text/javascript"></script>
+                        <script src="jingmi/core.php" charset="utf-8" type="text/javascript"></script>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
     </div>
 </div>
 <!--smooth-scrolling-of-move-up-->

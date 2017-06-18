@@ -2983,7 +2983,7 @@ select[multiple].form-group-lg .form-control {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -4390,8 +4390,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #443232;
+  border-color: #443232;
 }
 .navbar-default .navbar-brand {
   color: #777;

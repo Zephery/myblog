@@ -1,22 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Zephery
-  Date: 2017/1/21
-  Time: 13:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
+<jsp:include page="head.jsp">
+    <jsp:param name="indexactive" value="active"/>
+    <jsp:param name="title" value="Home"/>
+</jsp:include>
+<!--//header-->
 <html>
 <head>
-    <link rel="stylesheet" href="static/mdeditor/css/editormd.min.css" />
-    <script src="js/jquery.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/js/mousepicture/css/lanrenzhijia.css" type="text/css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/static/js/wowslider/engine1/style.css"/>
+    <script src="${pageContext.request.contextPath}/js/responsiveslides.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: false
+            });
+        });
+    </script>
 
 </head>
 <body>
-<div id="editormd">
-    <textarea style="display:none;">
-### Hello Editor.md !
-    </textarea>
-</div>
 </body>
 </html>
+<jsp:include page="foot.jsp"/>

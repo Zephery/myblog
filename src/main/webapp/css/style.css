@@ -1,6 +1,5 @@
 *{
     margin: 0;
-    padding: 0;
     font-family: "微软雅黑", "Lucida Grande", "Lucida Sans", Helvetica, Arial, Sans;
 }
 body {
@@ -54,7 +53,7 @@ ul.nav.navbar-nav.navbar-left li {
 
 ul.nav.navbar-nav li a {
     font-size: 17px;
-    color: #5d5d5d;
+    color: #fff;
 }
 
 ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav li a.active {
@@ -3124,4 +3123,34 @@ p.m_5 {
     left: auto;
     background: transparent url("../images/sp.png") no-repeat -77px -7px;
     right:0;
+}
+
+
+#weather {
+    width: 425px;
+    margin: 0px auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+#weather h2 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 150px;
+    font-weight: 300;
+    text-align: center;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+#weather ul {
+    margin: 0;
+    padding: 0;
+}
+#weather li {
+    background: #fff;
+    background: rgba(255,255,255,0.90);
+    padding: 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+#weather .currently {
+    margin: 0 20px;
 }
